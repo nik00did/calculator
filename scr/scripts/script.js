@@ -10,6 +10,12 @@ let display = document.getElementById('display'),
 clean.addEventListener('click', function (e) {
     clear(e.target.value);
 });
+
+display.addEventListener('change', function (e) {
+    if (display.value === undefined) {
+        clear(e);
+    }
+});
 for (let i = 0; i < numbers.length; i++) {
     let number = numbers[i];
     number.addEventListener('click', function (e) {
@@ -34,7 +40,13 @@ function numPress(num) {
         if (display.value === '0') {
             display.value = num;
         } else {
-            display.value += num;
+            if (display.value.length < 8) {
+                display.value += num;
+            }
+        }
+
+        if (display.value.length > 8) {
+            display.value = -1;
         }
     }
 
@@ -66,13 +78,13 @@ function operation(e) {
 }
 
 function decimal(e) {
-    let localDecimalMemory = display.value;
 
+    let localDecimalMemory = display.value;
     if (MemoryNewNumber) {
         localDecimalMemory = '0. ';
         MemoryNewNumber = false;
     } else {
-        if (localDecimalMemory.indexOf('.') === -1) {
+        if ((localDecimalMemory.indexOf('.') === -1) && localDecimalMemory.length < 7) {
             localDecimalMemory += '.';
         }
     }
@@ -81,43 +93,12 @@ function decimal(e) {
 }
 
 function clear(e) {
-    console.log(e);
     display.value = 0;
+    MemoryNewNumber = true;
+    MemoryCurrentNumber = 0;
+    MemoryPendingOperation = '';
 }
 
-
-function insert(num) {
-
-    if (!num || num === undefined || isNaN(num) || num === null) {
-        return '-1';
-    }
-
-    if (typeof num === 'number') {
-        if (textView.value === 0) {
-            textView.value = '';
-            let count = 1;
-            textView.value = textView.value + num;
-            console.log(textView.length);
-            /*if (plus() || minus() || multiply() || divide() count % 2 != 0 ) {
-                count++;
-
-            }*/
-        } else if (textView.value > 0) {
-            textView.value = textView.value + num;
-        }
-    }
-};
-
-function equal() {
-    let exp = document.textview.value;
-    if (exp) {
-        document.form.textview.value = eval(exp);
-    }
-};
-
-function cleanField() {
-    textView.value = 0;
-}
 
 const onChange = e => {
     if (!e || !e.target || !e.target.value) {
@@ -147,21 +128,6 @@ const setModelNumberValue = value => {
 //
 // };
 // init();
-function plus() {
-    textView.value = Number(firstOperand.value) + Number(secondOperand);
-}
-
-function minus() {
-    textView.value = Number(firstOperand) - Number(secondOperand);
-}
-
-function multiply() {
-    textView.value = Number(firstOperand) * Number(secondOperand);
-}
-
-function divide() {
-    textView.value = Number(firstOperand) / Number(secondOperand);
-}
 
 // const onChange = e => {
 //     if (!e || !e.target || !e.target.value){
@@ -195,10 +161,3 @@ function divide() {
 // clean.addEventListener('click', () => {
 //     textView.value = 0;
 // });
-
-
-// "-if you wanna to add button "<" back or last-clear for calculator, you should use next code of js"
-// function back(){
-// 	var exp = document.textview.value;
-// 	document.form.textview.value = exp.substring(0, exp.lenth-1);
-// }

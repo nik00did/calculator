@@ -1,5 +1,6 @@
 const model = {
     firstOperand: 0,
     secondOperand: 0,
-    equal: 0
+    result: 0,
+    operator: ''
 };
