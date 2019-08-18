@@ -3,15 +3,10 @@ let display = document.getElementById('display'),
     operations = document.querySelectorAll('.operation'),
     decimalBtn = document.getElementById('decimal'),
     clean = document.getElementById('ac'),
-    res = document.getElementById('result'),
     MemoryCurrentNumber = 0,
     MemoryNewNumber = false,
     MemoryPendingOperation = '';
 
-
-res.addEventListener('click', function (e) {
-    result(e.target.value);
-});
 clean.addEventListener('click', function (e) {
     clear(e.target.value);
 });
@@ -31,33 +26,40 @@ for (let i = 0; i < operations.length; i++) {
     });
 }
 function numPress(num) {
-    if (display.value === '0') {
+    if (MemoryNewNumber) {
         display.value = num;
+        MemoryNewNumber = false;
     } else {
-        display.value += num;
+        if (display.value === '0') {
+            display.value = num;
+        } else {
+            display.value += num;
+        }
     }
+
 }
 function operation(e) {
-    let localOperationMemory = display.value;
+    let localOperationMemory = parseFloat(display.value);
 
 
-    if (MemoryNewNumber) {
+    if (MemoryNewNumber && MemoryPendingOperation !== '=') {
         display.value = MemoryCurrentNumber;
     } else {
         MemoryNewNumber = true;
-        if (e === '+') {
+        if (MemoryPendingOperation === '+') {
             MemoryCurrentNumber += localOperationMemory;
-        } else if (e === '-') {
+        } else if (MemoryPendingOperation === '-') {
             MemoryCurrentNumber -= localOperationMemory;
-        } else if (e === '*') {
+        } else if (MemoryPendingOperation === '*') {
             MemoryCurrentNumber *= localOperationMemory;
-        } else if (e === '/') {
+        } else if (MemoryPendingOperation === '/') {
             MemoryCurrentNumber /= localOperationMemory;
         } else {
             MemoryCurrentNumber = localOperationMemory;
         }
 
         display.value = MemoryCurrentNumber;
+        MemoryPendingOperation = e;
     }
 }
 function decimal(e) {
@@ -67,9 +69,7 @@ function clear(e) {
     console.log(e);
     display.value = 0;
 }
-function result(e) {
-    operation(e)
-}
+
 
 function insert(num) {
 
