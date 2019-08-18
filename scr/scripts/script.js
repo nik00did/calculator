@@ -25,6 +25,7 @@ for (let i = 0; i < operations.length; i++) {
         operation(e.target.value)
     });
 }
+
 function numPress(num) {
     if (MemoryNewNumber) {
         display.value = num;
@@ -38,6 +39,7 @@ function numPress(num) {
     }
 
 }
+
 function operation(e) {
     let localOperationMemory = parseFloat(display.value);
 
@@ -62,9 +64,22 @@ function operation(e) {
         MemoryPendingOperation = e;
     }
 }
+
 function decimal(e) {
-    console.log(e);
+    let localDecimalMemory = display.value;
+
+    if (MemoryNewNumber) {
+        localDecimalMemory = '0. ';
+        MemoryNewNumber = false;
+    } else {
+        if (localDecimalMemory.indexOf('.') === -1) {
+            localDecimalMemory += '.';
+        }
+    }
+
+    display.value = localDecimalMemory;
 }
+
 function clear(e) {
     console.log(e);
     display.value = 0;
@@ -105,20 +120,20 @@ function cleanField() {
 }
 
 const onChange = e => {
-    if (!e || !e.target || !e.target.value){
+    if (!e || !e.target || !e.target.value) {
         return
     }
 
     const handledValue = parseFloat(e.target.value);
 
-    if(isNaN(handledValue)){
+    if (isNaN(handledValue)) {
         return;
     }
     setModelNumberValue(handledValue);
 };
 
 const setModelNumberValue = value => {
-    if (!value){
+    if (!value) {
         return;
     }
     model.firstOperand = value;
@@ -135,12 +150,15 @@ const setModelNumberValue = value => {
 function plus() {
     textView.value = Number(firstOperand.value) + Number(secondOperand);
 }
+
 function minus() {
     textView.value = Number(firstOperand) - Number(secondOperand);
 }
+
 function multiply() {
     textView.value = Number(firstOperand) * Number(secondOperand);
 }
+
 function divide() {
     textView.value = Number(firstOperand) / Number(secondOperand);
 }
