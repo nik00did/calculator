@@ -1,42 +1,76 @@
-const textView = document.getElementById('textview'),
+let display = document.getElementById('display'),
     numbers = document.querySelectorAll('.number'),
     operations = document.querySelectorAll('.operation'),
     decimalBtn = document.getElementById('decimal'),
     clean = document.getElementById('ac'),
-    result = document.getElementById('result');
+    res = document.getElementById('result'),
+    MemoryCurrentNumber = 0,
+    MemoryNewNumber = false,
+    MemoryPendingOperation = '';
 
-result.addEventListener('click', function (e) {
-    console.log(e.target.value);
+
+res.addEventListener('click', function (e) {
+    result(e.target.value);
 });
-clean.addEventListener('click', clear);
-
+clean.addEventListener('click', function (e) {
+    clear(e.target.value);
+});
 for (let i = 0; i < numbers.length; i++) {
     let number = numbers[i];
-    number.addEventListener('click', numPress);
+    number.addEventListener('click', function (e) {
+        numPress(e.target.value);
+    });
 }
-decimalBtn.addEventListener('click', decimal);
-
+decimalBtn.addEventListener('click', function (e) {
+    decimal(e.target.value);
+});
 for (let i = 0; i < operations.length; i++) {
     let operator = operations[i];
-
-    operator.addEventListener('click', operation);
+    operator.addEventListener('click', function (e) {
+        operation(e.target.value)
+    });
 }
-
-function numPress(e) {
-    console.log(e.target.value);
+function numPress(num) {
+    if (display.value === '0') {
+        display.value = num;
+    } else {
+        display.value += num;
+    }
 }
 function operation(e) {
-    console.log(e.target.value);
+    let localOperationMemory = display.value;
+
+
+    if (MemoryNewNumber) {
+        display.value = MemoryCurrentNumber;
+    } else {
+        MemoryNewNumber = true;
+        if (e === '+') {
+            MemoryCurrentNumber += localOperationMemory;
+        } else if (e === '-') {
+            MemoryCurrentNumber -= localOperationMemory;
+        } else if (e === '*') {
+            MemoryCurrentNumber *= localOperationMemory;
+        } else if (e === '/') {
+            MemoryCurrentNumber /= localOperationMemory;
+        } else {
+            MemoryCurrentNumber = localOperationMemory;
+        }
+
+        display.value = MemoryCurrentNumber;
+    }
 }
 function decimal(e) {
-    console.log(e.target.value, e.srcElement.id);
+    console.log(e);
 }
 function clear(e) {
-    console.log(e.target.value, e.srcElement.id);
+    console.log(e);
+    display.value = 0;
 }
 function result(e) {
-
+    operation(e)
 }
+
 function insert(num) {
 
     if (!num || num === undefined || isNaN(num) || num === null) {
