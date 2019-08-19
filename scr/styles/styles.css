@@ -1,71 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-}
-
-.container {
-  width: 1024px;
-  height: 500px;
-  margin: 0 auto;
-  padding: 10px;
-/*   background: linear-gradient(60deg, #f1c40f,  #f39c, #e67e22, #00c); */
-}
-
-.main {
+    background: #fff;
+    height: 100hv;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-}
-
-.body-calculator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: powderblue;
-  min-width: 300px;
-  border-radius: 20%;
-  padding: 10px 15px;
-}
-
-.title-calculator {
-  text-align: center;
-  color: #000;
-  font-weight: 900;
-}
-
-.table {
-  width: 100%;
-}
-
-.row {
-  display: flex;
-  width: 100%;
+  
 }
 
 .button {
-  text-align: center;
-  width: 50px;
-  height: 50px;
-  font-size: 25 px;
-  cursor: pointer;
+    text-align: center;
+/*     width: 50px; */
+/*     height: 50px; */
+    font-size: 25px;
+    margin: 2px;
+    cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  min-height: 15px;
+  width: 65px; 
 }
 
 .textview {
-  text-align:center; 
-  width: 168px;
-  margin: 0px 0px 15px 0px;
-  font-size: 25;
-  padding: 5px 15px;
+    text-align: right;
+    width: 217px;
+    margin: 5px;
+    font-size: 25px;
+    padding: 5px;
 }
 
-.equal,
+.main {/*
+    width: 500px;
+    position: absolute;
+    top: 30%;
+    left: 50%;*/
+    /*transform: translateX(-50%) translate(-50%);*/
+}
+
+.calc-block {
+   width: 300px;
+   display: block;
+   background: #2b2424;
+   margin: 50px auto;
+   border-radius: 40px;
+  min-height: 400px;
+  
+}
+
+.form {
+    text-align: center;
+    margin: 10px;
+}
+
+.table {
+    margin: 20px auto;
+}
+
+p {
+    text-align: left;
+    margin: auto 0;
+  padding: 15px 10px 10px 20px;
+    color: white;
+    font-size: 24px;
+/*     font-family: "helvetica"; */
+}
+
 .clean {
-  width:100px;
-  margin: 0 auto;
+  background-color: red;
+  border-radius: 10px;
+  min-height: 30px;
+  width: 60px;
+  font-size: 25px;
+  color: #fff;
+  margin: 2px 3px 10px 3px;
 }
 
 
