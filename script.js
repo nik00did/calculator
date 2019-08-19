@@ -67,9 +67,9 @@ function operation(e) {
             MemoryCurrentNumber += localOperationMemory;
         } else if (MemoryPendingOperation === '-') {
             MemoryCurrentNumber -= localOperationMemory;
-        } else if (MemoryPendingOperation === '*') {
+        } else if (MemoryPendingOperation === 'X') {
             MemoryCurrentNumber *= localOperationMemory;
-        } else if (MemoryPendingOperation === '/') {
+        } else if (MemoryPendingOperation === '÷') {
             MemoryCurrentNumber /= localOperationMemory;
         } else {
             MemoryCurrentNumber = localOperationMemory;
@@ -115,7 +115,7 @@ function disabledBtnFalse() {
     let btn = document.getElementsByTagName('input');
 
     for (let input of btn) {
-        if (input.value !== "AC") {
+        if (input.value !== "C/CE") {
             input.disabled = false;
         }
     }
@@ -125,7 +125,7 @@ function disabledBtnTrue() {
     let btn = document.getElementsByTagName('input');
 
     for (let input of btn) {
-        if (input.value !== "AC") {
+        if (input.value !== "C/CE") {
             input.disabled = true;
         }
     }
