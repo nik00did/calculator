@@ -84,7 +84,8 @@ function operation(e) {
 
         display.value = MemoryCurrentNumber;
         MemoryPendingOperation = e;
-        setDataToModel(MemoryCurrentNumber, localOperationMemory, display.value, e)
+        setDataToModel(MemoryCurrentNumber, localOperationMemory, display.value, e);
+
     }
 }
 
@@ -137,14 +138,10 @@ function setDataToModel(firstOperand, secondOperand, result, operator) {
         return;
     }
 
-    let data = {
-        firstOperand: firstOperand,
-        secondOperand: secondOperand,
-        result: result,
-        operator: operator
-    }
-
-    model.push(data);
+    model.firstOperand = firstOperand;
+    model.secondOperand = secondOperand;
+    model.result = result;
+    model.operator = operator
     
 }
 
