@@ -77,15 +77,14 @@ function operation(e) {
 
         display.value = MemoryCurrentNumber;
 
-        if(MemoryCurrentNumber.toString() === 'Infinity' ) {
-            MemoryCurrentNumber = 'Error';
-        } else if (MemoryCurrentNumber.toString().length > 8) {
+        if((MemoryCurrentNumber.toString() === 'Infinity') || (MemoryCurrentNumber.toString().length > 8)) {
             MemoryCurrentNumber = -1;
+            disabledBtnTrue()
         }
 
         display.value = MemoryCurrentNumber;
         MemoryPendingOperation = e;
-
+        setDataToModel(MemoryCurrentNumber, localOperationMemory, display.value, e)
     }
 }
 
@@ -109,7 +108,51 @@ function clear(e) {
     MemoryNewNumber = true;
     MemoryCurrentNumber = 0;
     MemoryPendingOperation = '';
+    disabledBtnFalse();
 }
+
+function disabledBtnFalse() {
+    let btn = document.getElementsByTagName('input');
+
+    for (let input of btn) {
+        if (input.value !== "AC") {
+            input.disabled = false;
+        }
+    }
+}
+
+function disabledBtnTrue() {
+    let btn = document.getElementsByTagName('input');
+
+    for (let input of btn) {
+        if (input.value !== "AC") {
+            input.disabled = true;
+        }
+    }
+}
+
+function setDataToModel(firstOperand, secondOperand, result, operator) {
+    
+    if (!operator || operator === '=') {
+        return;
+    }
+
+    let data = {
+        firstOperand: firstOperand,
+        secondOperand: secondOperand,
+        result: result,
+        operator: operator
+    }
+
+    model.push(data);
+    
+}
+
+
+
+
+
+
 
 
 const onChange = e => {
