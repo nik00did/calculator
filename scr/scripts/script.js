@@ -17,12 +17,16 @@ display.addEventListener('change', function (e) {
     }
 });
 
-for (let i = 0; i < numbers.length; i++) {
-    let number = numbers[i];
-    number.addEventListener('click', function (e) {
-        numPress(e.target.value);
-    });
+function foo() {
+
+    for (let i = 0; i < numbers.length; i++) {
+        let number = numbers[i];
+        number.addEventListener('click', function (e) {
+            numPress(e.target.value);
+        });
+    }
 }
+foo(numbers);
 
 decimalBtn.addEventListener('click', function (e) {
     decimal(e.target.value);
@@ -77,15 +81,14 @@ function operation(e) {
 
         display.value = MemoryCurrentNumber;
 
-        if((MemoryCurrentNumber.toString() === 'Infinity') || (MemoryCurrentNumber.toString().length > 8)) {
+        if ((MemoryCurrentNumber.toString() === 'Infinity') || (MemoryCurrentNumber.toString().length > 8)) {
             MemoryCurrentNumber = -1;
             disabledBtnTrue()
         }
 
         display.value = MemoryCurrentNumber;
         MemoryPendingOperation = e;
-        setDataToModel(MemoryCurrentNumber, localOperationMemory, display.value, e);
-
+        setDataToModel(MemoryCurrentNumber, localOperationMemory, display.value, e)
     }
 }
 
@@ -133,23 +136,21 @@ function disabledBtnTrue() {
 }
 
 function setDataToModel(firstOperand, secondOperand, result, operator) {
-    
+
     if (!operator || operator === '=') {
         return;
     }
 
-    model.firstOperand = firstOperand;
-    model.secondOperand = secondOperand;
-    model.result = result;
-    model.operator = operator
-    
+    let data = {
+        firstOperand: firstOperand,
+        secondOperand: secondOperand,
+        result: result,
+        operator: operator
+    }
+
+    model.push(data);
+
 }
-
-
-
-
-
-
 
 
 const onChange = e => {
