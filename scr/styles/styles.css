@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    height: 100%;
+}
+
+.button,
+.button-ac {
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.textview {
+    text-align: center;
+    width: 217px;
+    margin: 5px;
+    font-size: 25px;
+    padding: 5px;
+}
+
+.main {/*
+    width: 500px;
+    position: absolute;
+    top: 30%;
+    left: 50%;*/
+    /*transform: translateX(-50%) translate(-50%);*/
+}
+
+.calc-block {
+    max-width: 300px;
+    display: block;
+    background: orange;
+    margin: 50px auto;
+}
+
+.form {
+    text-align: center;
+    margin: 10px;
+}
+
+.table {
+    margin: 20px auto;
+
+}
+
+.equal, .clean, .null {
+    width: 108px;
+    margin: 0 auto;
+}
+
+p {
+    text-align: center;
+    margin: 10px;
+    color: white;
+    font-size: 14px;
+    font-family: "helvetica";
+}
