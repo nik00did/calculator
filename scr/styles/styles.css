@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -26,13 +27,19 @@ body {
     padding: 5px;
 }
 
-.main {
+.main {/*
     width: 500px;
     position: absolute;
     top: 30%;
-    left: 50%;
-    transform: translateX(-50%) translate(-50%);
+    left: 50%;*/
+    /*transform: translateX(-50%) translate(-50%);*/
+}
+
+.calc-block {
+    max-width: 300px;
+    display: block;
     background: orange;
+    margin: 50px auto;
 }
 
 .form {
@@ -41,7 +48,8 @@ body {
 }
 
 .table {
-    margin: 20px;
+    margin: 20px auto;
+
 }
 
 .equal, .clean, .null {

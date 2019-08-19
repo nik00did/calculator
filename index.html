@@ -9,42 +9,45 @@
 </head>
 <body>
 <div class="main">
-    <div>
-        <p>Javascripot Calculator</p>
+    <div class="calc-block">
+        <div>
+            <p>Javascripot Calculator</p>
+        </div>
+
+        <form name="form" class="form">
+            <input disabled type="text" id="display" class="textview" name="textview" value="0"/>
+        </form>
+        <table class="table">
+            <tr>
+                <td><input class="number button" type="button" value="7"></td>
+                <td><input class="number button" type="button" value="8"></td>
+                <td><input class="number button" type="button" value="9"></td>
+                <td><input class="operation button" type="button" value="+"></td>
+            </tr>
+            <tr>
+                <td><input class="number button" type="button" value="4"></td>
+                <td><input class="number button" type="button" value="5"></td>
+                <td><input class="number button" type="button" value="6"></td>
+                <td><input class="operation button" type="button" value="-"></td>
+            </tr>
+            <tr>
+                <td><input class="number button" type="button" value="1"></td>
+                <td><input class="number button" type="button" value="2"></td>
+                <td><input class="number button" type="button" value="3"></td>
+                <td><input class="operation button" type="button" value="*"></td>
+            </tr>
+            <tr>
+                <td colspan=2><input class="number button null" type="button" value="0"></td>
+                <td><input id="decimal" class="button" type="button" value="."></td>
+                <td><input class="button operation" type="button" value="/"></td>
+            </tr>
+            <tr>
+                <td colspan=2><input class="button operation equal" type="button" value="="></td>
+                <td colspan=2><input class="button-ac clean" id="ac" type="button" value="AC"></td>
+            </tr>
+        </table>
     </div>
 
-    <form name="form" class="form">
-        <input disabled type="text" id="display" class="textview" name="textview" value="0"/>
-    </form>
-    <table class="table">
-        <tr>
-            <td><input class="number button" type="button" value="7"></td>
-            <td><input class="number button" type="button" value="8"></td>
-            <td><input class="number button" type="button" value="9"></td>
-            <td><input class="operation button" type="button" value="+" ></td>
-        </tr>
-        <tr>
-            <td><input class="number button" type="button" value="4"></td>
-            <td><input class="number button" type="button" value="5"></td>
-            <td><input class="number button" type="button" value="6"></td>
-            <td><input class="operation button" type="button" value="-"></td>
-        </tr>
-        <tr>
-            <td><input class="number button" type="button" value="1"></td>
-            <td><input class="number button" type="button" value="2"></td>
-            <td><input class="number button" type="button" value="3"></td>
-            <td><input class="operation button" type="button" value="*"></td>
-        </tr>
-        <tr>
-            <td colspan=2><input class="number button null" type="button" value="0"></td>
-            <td><input id="decimal" class="button" type="button" value="."></td>
-            <td><input class="button operation" type="button" value="/"></td>
-        </tr>
-        <tr>
-            <td colspan=2><input class="button operation equal" type="button" value="="></td>
-            <td colspan=2><input class="button-ac clean" id="ac" type="button" value="AC"></td>
-        </tr>
-    </table>
     <script src="./scr/scripts/model.js"></script>
     <script src="./scr/scripts/script.js"></script>
 </div>

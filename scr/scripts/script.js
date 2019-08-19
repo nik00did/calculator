@@ -16,15 +16,18 @@ display.addEventListener('change', function (e) {
         clear(e);
     }
 });
+
 for (let i = 0; i < numbers.length; i++) {
     let number = numbers[i];
     number.addEventListener('click', function (e) {
         numPress(e.target.value);
     });
 }
+
 decimalBtn.addEventListener('click', function (e) {
     decimal(e.target.value);
 });
+
 for (let i = 0; i < operations.length; i++) {
     let operator = operations[i];
     operator.addEventListener('click', function (e) {
@@ -73,7 +76,16 @@ function operation(e) {
         }
 
         display.value = MemoryCurrentNumber;
+
+        if(MemoryCurrentNumber.toString() === 'Infinity' ) {
+            MemoryCurrentNumber = 'Error';
+        } else if (MemoryCurrentNumber.toString().length > 8) {
+            MemoryCurrentNumber = -1;
+        }
+
+        display.value = MemoryCurrentNumber;
         MemoryPendingOperation = e;
+
     }
 }
 
